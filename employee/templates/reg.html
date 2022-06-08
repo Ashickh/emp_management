@@ -11,39 +11,31 @@
 
 <body>
 
-    <div class="container w-50 ">
-        <h1 class="text-dark text-center">Registration Form</h1>
-        <form action="" method="post">
-            {%csrf_token%}
-            <div class="border mt-2 p-2 text-primary bg-light">
-                <div>
-                    <label for="">First Name</label>
-                    <input type="text" name="f_name" id="" class="form-control">
-                </div>
-                <div>
-                    <label for="">Last Name</label>
-                    <input type="text" class="form-control" name="l_name">
-                </div>
-                <div><label for="mail">Email</label>
-                    <input type="email" id="mail" class="form-control" name="e_mail">
-                </div>
-                <div>
-                    <label for="">User Name</label>
-                    <input type="text" class="form-control" name="u_name">
-                </div>
-                <div><label for="">Password</label>
-                    <input type="password" class="form-control" name="pwd">
-                </div>
+<div class="container w-50 ">
+    <h1 class="text-dark text-center">Registration Form</h1>
+    <div class="card text-center">
+        <div class="card-header">
+            Register Employee
+        </div>
+        <div class="card-body">
+           <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
 
-                <div>
-                    <button class="btn btn-primary" style="margin-top:20px" type="submit">Register</button>
+        <div>
+            <button class="btn btn-primary" style="margin-top:20px" type="submit">Register</button>
 
-                </div>
-
-
-            </div>
-        </form>
+        </div>
+    </form>
+        </div>
+        <div class="card-footer text-muted">
+            Employee Management
+        </div>
     </div>
+
+
+
+</div>
 </body>
 
 </html>
