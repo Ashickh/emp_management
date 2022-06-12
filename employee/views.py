@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from employee.forms import LoginForm
 from employee.forms import RegForm
 from employee.forms import EmployeeForm
+from django.contrib import messages
 
 # function based requests
 
@@ -83,7 +84,9 @@ class EmpCreateView(View):
             print(form.cleaned_data.get("salary"))
             print (form.cleaned_data.get ("email"))
             print (form.cleaned_data.get ("experience"))
-            return render(request,self.success_temp,{"form":form})
+            messages.success(request,"PROFILE ADDED SUCCESSFULLY")
+            return redirect("emp-add")
         else:
+            messages.error(request,"PROFILE ADDING FAILED")
             return render(request,self.template_name,{"form":form})
 
