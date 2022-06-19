@@ -9,3 +9,6 @@ class Employee(models.Model):
     salary=models.PositiveIntegerField()
     email=models.EmailField(unique=True)
     experience=models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.emp_name

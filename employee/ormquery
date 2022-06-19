@@ -1,0 +1,51 @@
+ORM Query
+
+1. create()
+create object
+modelname.objects.create(field=value)
+
+Employee.objects.create(eid="emp_100",emp_name="Ashiq",desig="Developer",salary="55000",email="ashiq@gmail.com")
+
+Retrieving objects
+
+2. all()
+xyz=modelname.objects.all()
+
+for i in xyz:
+    print(i.key)
+
+3. filter()
+model_name.objects.filter(field="value")
+
+filterations:>
+
+field look up's:-
+
+greater_than  (field_name__gt=value)
+greater_than or equal to  (field_name__gte=value)
+less_than  (field_name__lt=value)
+less_than or equal to  (field_name__lte=value)
+not equal .all()salary.exclude(desig="Developer")
+
+designation__iexact="developer"  # doesn't check case sensitives
+emp_name__icontains="an"   # will print the emp names contains "an"
+
+4. get()
+ab=Employee.objects.get(eid="emp_103")
+
+Updations:>
+
+edit expeience
+ab=Employee.objects.get(eid="emp_103")
+ab.experience=4
+ab.save()
+
+delete:>
+
+ab=Employee.objects.get(eid="emp_103")
+ab.delete()
+
+
+
+
+
