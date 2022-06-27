@@ -1,7 +1,5 @@
 {%extends 'base.html'%}
-{%load static%}
 {%block body_block%}
-
 
  <div class="row">
         <div class="col-4"></div>
@@ -31,7 +29,7 @@
 </div>
 <div class="row">
     <div class="col-4"></div>
-    <div class="col-4"><h1>Employee Registration</h1></div>
+    <div class="col-4"><h1>Edit Employee</h1></div>
     <div class="col-4"></div>
 </div>
 
@@ -39,23 +37,16 @@
  <form action="" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
 
-<div class="container w-60 border border-dark ">
+<div class="container w-60 border border-dark mt-80">
     <div class="row">
 
         <div class="col-4">
+          <div>  <img src="{{emp.profile_pic.url}}" alt=""></div>
 
-            <div class="card mt-5" style="width: 24rem;">
-  <img src="{%static 'images/unk.jpg'%}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Add Pofile Picture</h5>
-
-   <div>
-                    <button class="btn btn-primary justify-content-center" style="margin-top:20px" type="submit">{{ form.profile_pic }}</button>
+ <label for="">Profile Picture:</label>
+ <div>
+                    <button class="btn btn-primary" style="margin-top:20px" type="submit">{{ form.profile_pic }}</button>
                 </div>
-  </div>
-</div>
-
-
 
 
         </div>
@@ -63,19 +54,19 @@
 
             <img src="" alt="">
 
-        <div class="fieldWrapper mt-5" >
+        <div class="fieldWrapper">
 
     <label for="">Employee Name:</label>
     {{ form.emp_name }}
 </div>
 
-             <div class="fieldWrapper mt-5">
+             <div class="fieldWrapper">
 
     <label for="">Salary:</label>
     {{ form.salary }}
 </div>
 
-             <div class="fieldWrapper mt-5">
+             <div class="fieldWrapper">
 
     <label for="">Email Id:</label>
     {{ form.email }}
@@ -86,34 +77,32 @@
         <div class="col-4">
             <img src="" alt="">
 
-         <div class="fieldWrapper mt-5">
+         <div class="fieldWrapper">
 
     <label for="">Designation:</label>
     {{ form.desig }}
 </div>
 
-             <div class="fieldWrapper mt-5">
+             <div class="fieldWrapper">
 
     <label for="">Employee Id</label>
     {{ form.eid }}
 </div>
-             <div class="fieldWrapper mt-5">
+             <div class="fieldWrapper">
 
     <label for="">Experience:</label>
     {{ form.experience }}
 
 </div>
-             <div>
-                    <button class="btn btn-secondary mt-5 d-flex justify-content-center"  type="submit">Add Employee</button>
-                </div>
-
         </div>
 
 
 
 
 
-
+                <div>
+                    <button class="btn btn-secondary" style="margin-top:20px" type="submit">Update Employee</button>
+                </div>
             </form>
 
 {%endblock%}

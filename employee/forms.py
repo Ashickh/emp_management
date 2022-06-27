@@ -1,8 +1,53 @@
 from django import forms
+from employee.models import Employee
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
-# class LoginForm(forms.Form):
-#     user_name=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
-#     password=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control"}))
+class EmployeeCreateForm(forms.ModelForm):
+    class Meta:
+        model=Employee
+        fields="__all__"
+
+        widgets={
+            "eid":forms.TextInput(attrs={'class':"form-control rounded-pill"}),
+            "emp_name": forms.TextInput (attrs={'class': "form-control rounded-pill"}),
+            "desig": forms.TextInput (attrs={'class': "form-control rounded-pill"}),
+            "salary": forms.NumberInput (attrs={'class': "form-control rounded-pill"}),
+            "email": forms.EmailInput (attrs={'class': "form-control rounded-pill"}),
+            "experience": forms.NumberInput (attrs={'class': "form-control rounded-pill"})
+
+        }
+
+class UserRegistrationForm(UserCreationForm):
+    class Meta:
+        model=User
+        fields=[
+            "first_name",
+                "last_name",
+                "email",
+                "username",
+                "password1",
+                "password2",
+        ]
+
+        widgets = {
+            "first_name": forms.TextInput (attrs={'class': "form-control rounded-pill"}),
+            "last_name": forms.TextInput (attrs={'class': "form-control rounded-pill"}),
+            "email": forms.EmailInput (attrs={'class': "form-control rounded-pill"}),
+            "username": forms.TextInput (attrs={'class': "form-control rounded-pill"}),
+            "password1": forms.PasswordInput (attrs={'class': "form-control rounded-pill"}),
+            "password2": forms.PasswordInput (attrs={'class': "form-control rounded-pill"})
+
+        }
+
+
+
+
+
+
+class LoginForm(forms.Form):
+    username=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+    password=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control"}))
 #
 # class RegForm(forms.Form):
 #     f_name=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter First Name"}))
@@ -11,13 +56,13 @@ from django import forms
 #     u_name=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Username"}))
 #     pwd=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter password"}))
 
-class EmployeeCreateForm(forms.Form):
-    eid=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Emp ID"}))
-    emp_name=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill", "placeholder":"Enter Name"}))
-    desig=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Designation"}))
-    salary=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Salary"}))
-    email=forms.EmailField(widget=forms.EmailInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Email"}))
-    experience=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Experience"}))
+# class EmployeeCreateForm(forms.Form):
+#     eid=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Emp ID"}))
+#     emp_name=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill", "placeholder":"Enter Name"}))
+#     desig=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Designation"}))
+#     salary=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Salary"}))
+#     email=forms.EmailField(widget=forms.EmailInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Email"}))
+#     experience=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"form-control rounded-pill","placeholder":"Enter Experience"}))
 
     # def clean(self):
     #     cleaned_data=super().clean()
